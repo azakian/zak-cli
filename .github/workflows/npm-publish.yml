@@ -8,24 +8,37 @@ on:
     types: [created]
 
 jobs:
-  build:
+  update-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract version from tag
+        id: extract_version
+        run: echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
+      - name: Update version in package.json
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          npm version ${{ steps.extract_version.outputs.VERSION }} --no-git-tag-version
+          git add package.json
+          git commit -m "chore: update package version to ${{ steps.extract_version.outputs.VERSION }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'main'
+
+  publish-npm:
+    needs: update-version
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - run: git checkout HEAD^
       - uses: actions/setup-node@v4
         with:
           node-version: 20
