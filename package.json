@@ -1,0 +1,35 @@
+{
+  "name": "zak-cli",
+  "version": "1.0.2",
+  "main": "./dist/index.js",
+  "bin": {
+    "zak": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "npx tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "inquirer": "^12.5.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.13.14",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azakian/zak-cli.git"
+  },
+  "type": "module"
+}
