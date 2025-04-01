@@ -1,6 +1,5 @@
-﻿import {Command} from "commander";
-import simpleGit from "simple-git";
-import inquirer from "inquirer";
+﻿import simpleGit from "simple-git";
+import {select} from "@inquirer/prompts";
 
 export const switchBranch = async () => {
     const git = simpleGit();
@@ -12,21 +11,24 @@ export const switchBranch = async () => {
     }
 
     const branches = await git.branchLocal();
-    const { branch } = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'branch',
-            message: 'Select a branch:',
-            choices: branches.all
-        }
-    ]);
+    const branch: SelectedBranch | undefined = await selectBranch(branches.all);
 
+    if (!branch) {
+        console.error('No branch selected')
+        return;
+    }
     await git.checkout(branch);
     console.log(`Switched to branch: ${branch}`);
 }
 
-export const SwitchBranchCommand = new Command()
-    .command('bs')
-    .description('Switch Git branches interactively')
-    .action(switchBranch);
+
+type SelectedBranch = string;
+const userExitPrompt = (error: unknown) => error instanceof Error && error.name === 'ExitPromptError';
+const selectBranch = async (branchChoices: string[]): Promise<SelectedBranch | undefined> => {
+    try {
+        return await select({message: 'Select branch', choices: branchChoices, pageSize: 20});
+    } catch (error) {
+        return undefined;
+    }
+}
 
