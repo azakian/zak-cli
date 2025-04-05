@@ -1,5 +1,35 @@
 # ZAK CLI
+
 Light cli with git utils written in typescript
 
-## Branch switcher
-`zak bs` : switch git branch by selecting it with your arrows
+## Installation
+
+```npm install zak-cli -g```
+
+## Commands
+
+---
+
+### Switch Branch
+
+Switch branch by selecting from a list.
+
+```zak bs```
+
+```zak switch-branch```
+
+### Create branch
+
+Create a new branch from the current branch.
+
+```zak cb <branch-name>```
+
+```zak create-branch <branch-name>```
+
+### Delete branch
+
+Delete local branches from a multi-select
+
+```zak db```
+
+```zak delete-branch <branch-name>```
