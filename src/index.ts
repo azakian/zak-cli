@@ -1,13 +1,15 @@
 ﻿import {Command} from "commander";
-import {switchBranch} from "./command/switch-branch.js";
+import {SwitchBranchCommand} from "./command/switch-branch.js";
+import {CreateBranchCommand} from "./command/create-branch";
 
 const cli = new Command()
 cli.version('1.0.0');
 
-cli.command('bs')
-    .description('Switch Git branches interactively')
-    .action(switchBranch)
+cli.addCommand(SwitchBranchCommand)
+cli.addCommand(CreateBranchCommand)
 
 cli.parse(process.argv);
 
-process.on('SIGINT', () => {console.log("Exit")});
+process.on('SIGINT', () => {
+    console.log("Exit")
+});

@@ -1,5 +1,6 @@
 export const COMMANDS = {
-    BS: 'BS'
+    BS: 'bs',
+    CB: 'cb'
 } as const;
 
 
