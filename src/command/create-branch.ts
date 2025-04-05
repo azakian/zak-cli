@@ -4,6 +4,7 @@ import {getSimpleGit} from "./simple-git";
 
 export const CreateBranchCommand = new Command(COMMANDS.CB)
     .description('Create a new branch')
+    .alias('create-branch')
     .argument('<branch>', 'Name of the new branch')
     .action((branch: string) => createBranch(branch))
 

@@ -19,6 +19,7 @@ export const switchBranch = async () => {
 
 export const SwitchBranchCommand = new Command(COMMANDS.BS)
     .description('Switch Git branches interactively')
+    .alias('switch-branch')
     .addOption(new Option('-l', 'Switch to the last branch'))
     .action((options) => {
         console.log(options)
