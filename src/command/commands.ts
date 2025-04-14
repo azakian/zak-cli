@@ -2,6 +2,7 @@ export const COMMANDS = {
     BS: 'bs',
     CB: 'cb',
     DB: 'db',
+    RB: 'rb',
 } as const;
 
 

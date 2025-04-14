@@ -33,3 +33,11 @@ Delete local branches from a multi-select
 ```zak db```
 
 ```zak delete-branch <branch-name>```
+
+### Rename branch
+
+Rename current local branch
+
+```zak rb <wanted-branch-name>```
+
+```zak rename-branch <wanted-branch-name>```

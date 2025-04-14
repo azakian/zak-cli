@@ -3,13 +3,12 @@ import {COMMANDS} from "../commands";
 import {getSimpleGit} from "../utils/git-client/simple-git";
 import {checkbox} from "@inquirer/prompts";
 import {BranchSummary, SimpleGit} from "simple-git";
+import {PROTECTED_BRANCHES} from "../utils/git-client/git";
 
 export const DeleteBranchesCommand = new Command(COMMANDS.DB)
     .description('Delete git branches')
     .alias('delete-branch')
     .action(() => deleteBranches())
-
-const PROTECTED_BRANCHES = ['main', 'master', 'dev', 'develop', 'staging', 'release'];
 
 const deleteBranches = async (): Promise<void> => {
     const git: SimpleGit = await getSimpleGit();
