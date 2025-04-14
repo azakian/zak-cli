@@ -1,7 +1,7 @@
 ﻿import {Command} from "commander";
-import {SwitchBranchCommand} from "./command/switch-branch.js";
-import {CreateBranchCommand} from "./command/create-branch";
-import {DeleteBranchesCommand} from "./command/delete-branch";
+import {SwitchBranchCommand} from "./command/commands/switch-branch";
+import {CreateBranchCommand} from "./command/commands/create-branch";
+import {DeleteBranchesCommand} from "./command/commands/delete-branch";
 
 const cli = new Command()
 cli.version('1.0.0');

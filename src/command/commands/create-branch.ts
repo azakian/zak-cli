@@ -1,6 +1,6 @@
 import {Command} from "commander";
-import {COMMANDS} from "./commands";
-import {getSimpleGit} from "./simple-git";
+import {COMMANDS} from "../commands";
+import {getSimpleGit} from "../utils/git-client/simple-git";
 
 export const CreateBranchCommand = new Command(COMMANDS.CB)
     .description('Create a new branch')

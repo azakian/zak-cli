@@ -5,7 +5,8 @@ export const getSimpleGit = async (): Promise<SimpleGit> => {
     const isRepo = await git.checkIsRepo();
 
     if (!isRepo) {
-        throw new Error("Error: Not a git repository.");
+        console.log("❌ This is not a git repository.");
+        process.exit(0);
     }
 
     return git
