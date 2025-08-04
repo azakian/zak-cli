@@ -18,19 +18,22 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@inquirer/prompts": "^7.4.0",
-    "commander": "^13.1.0",
-    "simple-git": "^3.27.0"
+    "@inquirer/prompts": "^7.8.0",
+    "commander": "^14.0.0",
+    "simple-git": "^3.28.0"
   },
   "devDependencies": {
-    "@types/commander": "^2.12.0",
-    "@types/node": "^22.13.14",
+    "@types/commander": "^2.12.5",
+    "@types/node": "^24.2.0",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/azakian/zak-cli.git"
+  },
+  "volta": {
+    "node": "22.18.0"
   }
 }
