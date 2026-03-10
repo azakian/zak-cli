@@ -32,4 +32,4 @@ jobs:
           generate_release_notes: true
 
       - name: Publish to npm
-        run: npm publish --provenance
+        run: npm publish
